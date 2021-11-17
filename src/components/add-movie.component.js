@@ -41,7 +41,7 @@ class AddMovie extends Component {
     submitMovie() {
         let data = {
             title: this.state.title,
-            plot: this.state.description,
+            plot: this.state.plot,
             releaseDate: this.state.releaseDate,
         };
 
