@@ -2,8 +2,7 @@ FROM node:14.18.1-alpine as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
-COPY package-lock.json ./
-RUN yarn install --pure-lockfile
+RUN yarn install
 COPY . ./
 RUN yarn run build
 
