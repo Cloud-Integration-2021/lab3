@@ -9,7 +9,7 @@ platform:
 
 steps:
 
-- name:
+- name: build 
   image: node:14.18.1
   commands:
     - yarn install --pure-lockfile
