@@ -1,0 +1,49 @@
+###
+kind: pipeline
+type: docker
+name: linux-amd64
+
+platform:
+  arch: amd64
+  os: linux
+
+steps:
+
+- name:
+  image: node:14.18.1
+  commands:
+    - yarn install --pure-lockfile
+    - yarn build
+
+- name: publish to Dockerhub image
+  image: plugins/docker
+  settings:
+    auto_tag: true
+    repo: thomaslacaze/lab3
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    event:
+    - push
+    - tag
+    branch:
+    - master
+    - main
+
+- name: publish readme to Dockerhub
+  image: thomaslacaze/dockerhub-description:2.4.1
+  pull: always
+  settings:
+    repository: thomaslacaze/lab3
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    readme: /drone/src/README.md
+  when:
+    branch:
+    - master
+    - main
+###
