@@ -6,13 +6,9 @@ export default class MoviesList extends Component {
     constructor(props) {
         super(props);
         this.retrieveMovies = this.retrieveMovies.bind(this);
-        this.refreshList = this.refreshList.bind(this);
-        this.setActiveMovie = this.setActiveMovie.bind(this);
 
         this.state = {
             movies: [],
-            currentMovie: null,
-            currentIndex: -1,
         };
     }
 
@@ -33,85 +29,38 @@ export default class MoviesList extends Component {
             });
     }
 
-    refreshList() {
-        this.retrieveMovies();
-        this.setState({
-            currentMovie: null,
-            currentIndex: -1
-        });
-    }
-
-    setActiveMovie(movie, index) {
-        this.setState({
-            currentMovie: movie,
-            currentIndex: index
-        });
-    }
-
     render() {
-        const {movies, currentMovie, currentIndex} = this.state;
+        const {movies} = this.state;
 
         return (
-            <div>
-                <div>
-                    <h4>Movies List</h4>
+            <div className="grid grid-cols-3 gap-4 p-4 rounded-md">
+                {movies &&
+                movies.map((movie) => (
 
-                    <ul>
-                        {movies &&
-                        movies.map((movie, index) => (
-                            <li
-                                className={
-                                    "list-group-item " +
-                                    (index === currentIndex ? "active" : "")
-                                }
-                                onClick={() => this.setActiveMovie(movie, index)}
-                                key={index}
-                            >
-                                {movie.title}
-                            </li>
-                        ))}
-                    </ul>
-
-                </div>
-                <div>
-                    {currentMovie ? (
-                        <div>
-                            <h4>Movies</h4>
-                            <div>
-                                <label>
-                                    <strong>Title:</strong>
-                                </label>{" "}
-                                {currentMovie.title}
-                            </div>
-                            <div>
-                                <label>
-                                    <strong>Plot:</strong>
-                                </label>{" "}
-                                {currentMovie.plot}
-                            </div>
-
-                            <div>
-                                <label>
-                                    <strong>ReleaseDate:</strong>
-                                </label>{" "}
-                                {currentMovie.releaseDate}
-                            </div>
-
-
-                            <Link
-                                to={"/movies/" + currentMovie.id}
-                                className="badge badge-warning"
-                            >
-                                Edit
-                            </Link>
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                        <img className="w-full" src="https://source.unsplash.com/random/100x50"
+                             alt="Sunset in the mountains"/>
+                        <div className="px-6 py-4">
+                            <div className="font-bold text-xl mb-2">{movie.title}</div>
+                            <p className="text-gray-700 text-base">
+                                {movie.plot}
+                            </p>
                         </div>
-                    ) : (
-                        <div>
-                            <br/>
-                            <p>Please click on a movie...</p>
+                        <div className="text-right p-4">
+                            <span className="text-xs text-gray-500 tracking-widest uppercase">{movie.releaseDate}</span>
                         </div>
-                    )}
-                </div>
+                        <div className="px-6 pt-4 pb-2 text-center">
+                            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                                                <Link
+                                                                    to={"/movies/" + movie.id}
+                                                                    className="badge badge-warning"
+                                                                >
+                                    Edit
+                                </Link>
+                            </span>
+                        </div>
+                    </div>
+                ))}
             </div>
         );
     }
