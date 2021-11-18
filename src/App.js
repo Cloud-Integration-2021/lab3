@@ -51,7 +51,7 @@ export default function App() {
 
                 <div className="flex-grow">
                     <Routes>
-                        <Route exact={true} path="/" element={<MoviesList/>}/>
+                        <Route path="/" element={<MoviesList/>}/>
                         <Route path="/add" element={<AddMovie/>}/>
                         <Route path="/movies/:id" element={<Movie/>}/>
                     </Routes>
