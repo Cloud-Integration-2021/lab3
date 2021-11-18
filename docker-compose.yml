@@ -1,0 +1,12 @@
+version: '2.1'
+services:
+    lab3:
+      image: thomaslacaze/lab3
+      container_name: lab3
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+      restart: unless-stopped
+      environment: 
+        - BACKEND_ENDPOINT=http://localhost:8080
+      ports:
+        - 3000:3000

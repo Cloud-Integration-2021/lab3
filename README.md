@@ -1,72 +1,60 @@
-# Getting Started with Create React App
+# Cloud-Integration - Lab 3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React application for other labs
 
-## Available Scripts
+## 🛠️ Installation Steps
 
-In the project directory, you can run:
+### 🐳 Option 1: Run from Docker run
 
-### `yarn start`
+```bash
+# Run the container
+$ docker run \
+  -v /etc/localtime:/etc/localtime:ro \
+  -e "BACKEND_ENDPOINT=http://localhost:8080" \
+  --restart always \
+  --name lab3 \
+  -p 3000:3000 \
+  thomaslacaze/lab3
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🐳 Option 2: Run from Docker-compose
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**See [here](https://github.com/Cloud-Integration-2021/lab3/blob/main/docker-compose.yml)** 
 
-### `yarn test`
+### 💻 Option 3: Run from source
+#### Prerequisites
+* NodeJS, yarn.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository
 
-### `yarn build`
+```bash
+git clone https://github.com/Cloud-Integration-2021/lab3.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Change the working directory
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cd lab3
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Setup environnement variables
 
-### `yarn eject`
+| Environment Variable | Default                 | Description             |
+| -------------------- | ----------------------- | ----------------------- |
+| `BACKEND_ENDPOINT`   | `http://localhost:8080` | BackendEndpoint of lab1 |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Run the app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+$ yarn install --pure-lockfile
+$ yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+🌟 You are all set!
 
-## Learn More
+## Dockerfile
+<a href="https://github.com/Cloud-Integration-2021/lab3/blob/main/Dockerfile">Dockerfile</a>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# lab3
-# lab3
+## License
+<a href="https://github.com/Cloud-Integration-2021/lab3/blob/main/LICENSE">MIT</a>
