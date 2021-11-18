@@ -13,7 +13,7 @@ $ docker run \
   -e "BACKEND_ENDPOINT=http://localhost:8080" \
   --restart always \
   --name lab3 \
-  -p 3000:3000 \
+  -p 8083:80 \
   thomaslacaze/lab3
 ```
 
