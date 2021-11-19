@@ -10,7 +10,7 @@ React application for other labs
 # Run the container
 $ docker run \
   -v /etc/localtime:/etc/localtime:ro \
-  -e "BACKEND_URL=http://localhost:8080" \
+  -e "REACT_APP_BACKEND_URL=http://localhost:8080" \
   --restart always \
   --name lab3 \
   -p 3000:3000 \
@@ -41,7 +41,7 @@ cd lab3
 
 | Environment Variable | Default                 | Description             |
 | -------------------- | ----------------------- | ----------------------- |
-| `BACKEND_URL`   | `http://localhost:8080` | BackendEndpoint of lab1 |
+| `REACT_APP_BACKEND_URL`   | `http://localhost:8080` | BackendEndpoint of lab1 |
 
 4. Run the app
 
