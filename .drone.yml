@@ -84,7 +84,7 @@ steps:
   image: plugins/s3
   volumes:
   - name: cache
-    path: /drone/src/
+    path: /drone/src/build
   settings:
     bucket: 
       from_secret: aws_bucket_name
@@ -92,7 +92,7 @@ steps:
       from_secret: aws_access_key
     secret_key: 
       from_secret: aws_secret_key
-    source: ./**/*
+    source: /drone/src/build/**
     region: eu-west-1
     target: /
 
