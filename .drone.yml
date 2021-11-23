@@ -68,7 +68,8 @@ steps:
   - name: cache
     path: /drone/src/${CI_BUILD_TARGET}
   settings:
-    bucket: cloudintegration
+    bucket: 
+      from_secret: aws_bucket_name
     access_key: 
       from_secret: aws_access_key
     secret_key: 
