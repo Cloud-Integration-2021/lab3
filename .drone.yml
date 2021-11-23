@@ -70,9 +70,6 @@ kind: pipeline
 type: docker
 name: Deploy to S3
 
-workspace:
-  path: /drone/src/build
-
 steps:
 - name: build
   image: node:14.18.1
@@ -95,9 +92,10 @@ steps:
       from_secret: aws_access_key
     secret_key: 
       from_secret: aws_secret_key
-    source: ./*/**
+    source: build/*/**
     region: eu-west-1
     target: /
+    strip_prefix: build/
 
 trigger:
   event:
