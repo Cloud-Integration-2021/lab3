@@ -14,10 +14,11 @@ steps:
   commands:
     - yarn install --pure-lockfile
     - yarn run build
-  when:
-    event:
-      exclude:
-      - promote
+
+trigger:
+  event:
+    exclude:
+    - promote    
    
 ---      
 
