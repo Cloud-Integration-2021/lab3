@@ -63,7 +63,7 @@ steps:
   image: node
   volumes:
   - name: cache
-    path: /drone/src/dist/itm-frontend
+    path: /drone/src/dist/lab3
   commands:
   - yarn install --pure-lockfile
   - yarn run build
