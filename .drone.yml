@@ -14,7 +14,10 @@ steps:
   commands:
     - yarn install --pure-lockfile
     - yarn run build
-
+  event:
+    exclude:
+    - promote
+    
 - name: publish to Dockerhub image
   image: plugins/docker
   settings:
@@ -46,6 +49,9 @@ steps:
     branch:
     - master
     - main
+    event:
+      exclude:
+      - promote
 
 ---
 kind: pipeline
