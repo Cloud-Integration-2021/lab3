@@ -75,7 +75,7 @@ steps:
   image: node:14.18.1
   volumes:
   - name: cache
-    path: /drone/src/dist/lab3
+    path: /drone/src/build
   commands:
   - yarn install --pure-lockfile
   - yarn run build
