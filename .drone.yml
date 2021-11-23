@@ -46,4 +46,41 @@ steps:
     branch:
     - master
     - main
-###
+
+---
+kind: pipeline
+type: docker
+name: deploy
+
+steps:
+- name: build
+  image: node
+  volumes:
+  - name: cache
+    path: /drone/src/dist/itm-frontend
+  commands:
+  - yarn install --pure-lockfile
+  - yarn run build
+
+- name: Upload to S3
+  image: plugins/s3
+  volumes:
+  - name: cache
+    path: /drone/src/${CI_BUILD_TARGET}
+  settings:
+    bucket: cloudintegration
+    access_key: 
+      from_secret: aws_access_key
+    secret_key: 
+      from_secret: aws_secret_key
+    source: ${CI_BUILD_TARGET}/*
+    region: eu-west-1
+    target: /public
+
+trigger:
+  event:
+  - promote
+
+volumes:
+- name: cache
+  temp: {}
