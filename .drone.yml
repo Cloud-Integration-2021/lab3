@@ -92,7 +92,7 @@ steps:
       from_secret: aws_access_key
     secret_key: 
       from_secret: aws_secret_key
-    source: **/*
+    source: ./**/*
     region: eu-west-1
     target: /
 
