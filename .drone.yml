@@ -84,7 +84,7 @@ steps:
   image: plugins/s3
   volumes:
   - name: cache
-    path: /drone/src/build
+    path: /drone/src/${CI_BUILD_TARGET}
   settings:
     bucket: 
       from_secret: aws_bucket_name
@@ -92,9 +92,9 @@ steps:
       from_secret: aws_access_key
     secret_key: 
       from_secret: aws_secret_key
-    source: build/**/*
+    source: ${CI_BUILD_TARGET}/**/*
     region: eu-west-1
-    target: /
+    target: /public
 
 trigger:
   event:
