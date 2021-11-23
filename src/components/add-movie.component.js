@@ -53,11 +53,11 @@ class AddMovie extends Component {
                     releaseDate: response.data.releaseDate,
                 });
                 console.log(response.data);
+                this.props.navigate("/");
             })
             .catch(e => {
                 console.log(e);
-            });
-        this.props.navigate("/");
+            })
     }
 
     newMovie() {
