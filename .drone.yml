@@ -1,7 +1,7 @@
 ###
 kind: pipeline
 type: docker
-name: linux-amd64
+name: Build
 
 platform:
   arch: amd64
@@ -18,7 +18,19 @@ steps:
     event:
       exclude:
       - promote
-    
+   
+---      
+
+kind: pipeline
+type: docker
+name: Deploy docker container & readme
+
+platform:
+  arch: amd64
+  os: linux
+
+steps:
+
 - name: publish to Dockerhub image
   image: plugins/docker
   settings:
@@ -32,9 +44,6 @@ steps:
     event:
     - push
     - tag
-    branch:
-    - master
-    - main
 
 - name: publish readme to Dockerhub
   image: thomaslacaze/dockerhub-description:2.4.1
@@ -46,22 +55,23 @@ steps:
     password:
       from_secret: docker_password
     readme: /drone/src/README.md
-  when:
-    branch:
-    - master
-    - main
-    event:
-      exclude:
-      - promote
+
+trigger:
+  branch:
+  - master
+  - main
+  event:
+    exclude:
+    - promote
 
 ---
 kind: pipeline
 type: docker
-name: deploy
+name: Deploy to S3
 
 steps:
 - name: build
-  image: node
+  image: node:14.18.1
   volumes:
   - name: cache
     path: /drone/src/dist/lab3
