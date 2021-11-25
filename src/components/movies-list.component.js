@@ -46,9 +46,12 @@ export default class MoviesList extends Component {
                                 {movie.plot}
                             </p>
                         </div>
+
                         <div className="text-right p-4">
                             <span className="text-xs text-gray-500 tracking-widest uppercase">{movie.releaseDate}</span>
                         </div>
+
+
                         <div className="px-6 pt-4 pb-2 text-center">
                             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                                                                 <Link
