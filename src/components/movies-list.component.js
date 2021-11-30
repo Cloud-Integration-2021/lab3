@@ -22,7 +22,6 @@ export default class MoviesList extends Component {
                 this.setState({
                     movies: response.data
                 });
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);

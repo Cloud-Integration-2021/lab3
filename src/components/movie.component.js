@@ -71,7 +71,6 @@ class Movie extends Component {
                 this.setState({
                     currentMovie: response.data
                 });
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
@@ -84,7 +83,6 @@ class Movie extends Component {
             this.state.currentMovie
         )
             .then(response => {
-                console.log(response.data);
                 this.setState({
                     message: "The movie was updated successfully!"
                 });
@@ -97,7 +95,6 @@ class Movie extends Component {
     deleteMovie() {
         MovieDataService.delete(this.state.currentMovie.id)
             .then(response => {
-                console.log(response.data);
                 this.props.navigate("/");
             })
             .catch(e => {

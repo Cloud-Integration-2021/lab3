@@ -52,7 +52,6 @@ class AddMovie extends Component {
                     plot: response.data.plot,
                     releaseDate: response.data.releaseDate,
                 });
-                console.log(response.data);
                 this.props.navigate("/");
             })
             .catch(e => {
